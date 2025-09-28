@@ -1,5 +1,6 @@
 import os
 import tempfile
+from datetime import datetime
 import yt_dlp as youtube_dl
 from zipfile import ZipFile
 
@@ -28,7 +29,7 @@ def download_audio_with_mp3(youtube_link):
                 # Check if 'entries' key exists (playlist detection)
                 if info.get('entries', None):
                     # Create zip file path
-                    zip_filename = 'playlist_archive.zip'
+                    zip_filename = f'playlist_archive_{datetime.now().strftime("%Y%m%d_%H%M%S")}.zip'
                     zip_path = os.path.join(temp_dir, zip_filename)
                     
                     # Create zip archive of all MP3 files
